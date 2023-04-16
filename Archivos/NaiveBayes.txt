@@ -8,7 +8,7 @@ es mas propenso a fallar que el ID3, ya que este se basa en entropia
 
 clasificcion:
 
-	la case se obtiene con la mulyiplicacion de todas las probabilidades del caso.
+	la case se obtiene con la multiplicacion de todas las probabilidades del caso.
 	-> sacar tanto en si como en no y sumarla
 	-> sacar division de sumatoriacon si y con no, se escoge la que tenga mayor probabilidad
 	-> si ambas probabilidades salen igual (50/50) se esge cualquiera

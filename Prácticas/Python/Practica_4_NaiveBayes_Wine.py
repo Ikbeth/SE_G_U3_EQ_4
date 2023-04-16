@@ -1,14 +1,14 @@
 
 
 if __name__ == '__main__':
-    file2read = open("../Archivos/instanciaDiscretizada.csv")
+    file2read = open("../Archivos/Instancia_wine.csv")
     file_content = file2read.readlines()
 
     dataset = []
     for i in file_content:
         dataset.append((i.replace("\n", "")).split(","))
-    headers = dataset[0]
-    del dataset[0]
+    # headers = dataset[0]
+    # del dataset[0]
     # print(dataset)
 
     ##count registers per class
@@ -50,14 +50,14 @@ if __name__ == '__main__':
 
     # TESTING
 
-    file2read = open("../Archivos/instanciaDiscretizada.csv")
+    file2read = open("../Archivos/Instancia_wine.csv")
     file_content = file2read.readlines()
 
     dataset = []
     for i in file_content:
         dataset.append((i.replace("\n", "")).split(","))
-    headers = dataset[0]
-    del dataset[0]
+    # headers = dataset[0]
+    # del dataset[0]
 
     correct_classify = 0
 
