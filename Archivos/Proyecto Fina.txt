@@ -1,0 +1,26 @@
+ARDUINO:
+    tamaño de la muestra:   1   Directo
+                            30
+                            100
+
+    Preprocesamiento:   Media
+                        Mediana
+                        Moda
+                        Valor mayor
+                        valor menor
+
+PYTHON:
+    preprocesamiento:   normalización
+                        estandarización
+                        complemento de la normalización
+
+
+    preprocesamiento por outliers:  IQR
+                                    puntuación Z (aun no visto)
+
+    toma de decisiones: manual
+                        automatzado:    ID3
+                                        AL
+                                        KNN
+                                        NB
+                                        RNA - perceptron multicapa

@@ -1,0 +1,16 @@
+CLASIFICADOR NAIVE BAYES
+
+trabaja con datos discretizados.
+
+se deben sacar las probabilidades de cada atributo <- la suma debe dar o acercarse al uno en cada caso para el atributo
+
+es mas propenso a fallar que el ID3, ya que este se basa en entropia
+
+clasificcion:
+
+	la case se obtiene con la mulyiplicacion de todas las probabilidades del caso.
+	-> sacar tanto en si como en no y sumarla
+	-> sacar division de sumatoriacon si y con no, se escoge la que tenga mayor probabilidad
+	-> si ambas probabilidades salen igual (50/50) se esge cualquiera
+		-> tiene proceimiento extra pero no se va a ver
+		-> significa que el sistema no tiene suficites datos para ese caso

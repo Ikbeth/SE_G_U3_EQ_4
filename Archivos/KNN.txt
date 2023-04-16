@@ -1,0 +1,18 @@
+KNN
+
+k debe ser menor que la mitad de los numeros
+si aparecen 2 modas, se selecciona la primera, siendo la mas cercana al objeto
+dependiendo de la metrica de similitud es como se ordena (de mayor a menor o de menor a mayor)
+
+for enumarate() para sacar posiciones de vectores
+
+sorted(datos.items(), key= lambda x:x1, reverse=False)
+
+modulos de pyhon para modas	->	mode
+								multimode <- recomendado, permite manejar multiples modas
+								
+INVESTIGAR <- tipos de validación:
+					1. 
+					2.
+					
+PRÁCICA <- realizar aplcación KNN con instancia wine <- datos en archivo

@@ -1,0 +1,17 @@
+
+la mejor forma de preprocesamiento de datos por código es con mediana.
+
+Estandarización
+
+	Z = (x - promedio) / desvEstandar
+
+puedes hacer muestra de la muestra antes de aplicar estandarización, reduce aún mas el ruido aunque puede aumentar la inestabilidad de los datos.
+
+Normalización
+Complemento
+
+Eliminación de valores atípicos (OUTLIERS): elimina tanto los positivos como los negativos. necesitas analizar cuando eliminarlos, uno u otro o ambos. tiene que ver con mantener los valores cenrales -mediana-.
+
+Valores nominales: analisis de los doatos por partes, divididas por categorias. los valores numericos se convierten en valores nominales, se les llama al valor opr su categoría.
+
+Discretización

@@ -1,0 +1,29 @@
+ASOCIADOR LINEAL <-- red neuronal
+
+mismo concepo que el decodificador de electronica digital
+
+el impacto que tiene una neurona de entrada en una de salida se le llama peso
+	el peso varía entre relación de neuronas
+
+las marices suele se rectangulares, no cuadradas
+
+			1/N = ||Y - WX||
+	la minimización es --> W = YX^-1 
+			--> matriz inversa (pseudo inversa porque no es cuadrada)
+
+las cualidades deben estr en su valor numerico natural, mientras que la clase debe estar discretizada
+
+	-> one hot vector: da mejores resultados
+	-> binarización: tiene 8 valores que se pueden usar
+			 no se recomienda utilizar 0 0 porque se suele usar para indicar que la 			 red se equivoco
+			 no es aplicable a todos los casos
+paso 1:
+	transponer la matriz, tanto entradas como salidas por separado.
+paso 2:
+
+paso 3:
+
+
+		la matriz identidad no siempre es la matriz pseudoinversa
+
+programa utiliza instancia completa
