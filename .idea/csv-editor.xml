@@ -3,13 +3,6 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="C:\Users\hlato\Downloads\Instancia_wine.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\Ejercicios\Archivos\ebw.csv">
           <value>
             <Attribute>
@@ -39,6 +32,13 @@
           </value>
         </entry>
         <entry key="\Ejercicios\Archivos\instanciaNormalizada.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Prácticas\Archivos\Instancia_wine.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
