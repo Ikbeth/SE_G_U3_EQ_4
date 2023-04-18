@@ -1,7 +1,9 @@
-ARDUINO:
+ARDUINO: <- genera los datos segun nuestras instancias (botones/potenciometros)
     tamaño de la muestra:   1   Directo
                             30
+                            50
                             100
+    mientras más lecturas más tolerante al ruido debe ser
 
     Preprocesamiento:   Media
                         Mediana
@@ -9,14 +11,16 @@ ARDUINO:
                         Valor mayor
                         valor menor
 
-PYTHON:
+PYTHON: <- es el que organiza el tamaño de la muestra para generar 1 y el preprocesamiento
     preprocesamiento:   normalización
                         estandarización
                         complemento de la normalización
+                        discretización
 
 
     preprocesamiento por outliers:  IQR
                                     puntuación Z (aun no visto)
+    si contiene un outlier, entonces se elimina y se detiene la ejecución
 
     toma de decisiones: manual
                         automatzado:    ID3
@@ -24,3 +28,9 @@ PYTHON:
                                         KNN
                                         NB
                                         RNA - perceptron multicapa
+
+    en arduino debe prender un led dependiendo de la clase
+
+    hacer reporte que documente cada uno de los casos para ver cual es el más presiso
+        cada version con 30 vectores y el que tenga mas presición más rapido
+    probar con valores fijos de pokémons que ya conocemos para validar su funcionamiento
