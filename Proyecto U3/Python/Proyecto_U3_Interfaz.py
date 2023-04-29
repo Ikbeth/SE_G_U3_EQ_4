@@ -18,39 +18,43 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.btnGenerar.clicked.connect(self.Generar)
         self.btnSalir.clicked.connect(self.Salir)
         self.cBoxCantidad.activated.connect(self.cantidad)
+        self.cBoxIA.activated.connect(self.IA)
 
-        self.cBoxPreArduino.model().item(0).setEnabled(False)
-        self.cBoxPreArduino.model().item(1).setEnabled(False)
-        self.cBoxPreArduino.model().item(2).setEnabled(False)
-        self.cBoxPreArduino.model().item(3).setEnabled(False)
-        self.cBoxPreArduino.model().item(4).setEnabled(False)
-        self.cBoxPreArduino.model().item(5).setEnabled(True)
+        self.listaPreArduino = ['Ninguna', ['Media', 'Mediana', 'Moda', 'Menor', 'Mayor']]
+
+        if self.cBoxCantidad.currentText() == '1':
+            self.cBoxPreArduino.clear()
+            self.cBoxPreArduino.addItem(self.listaPreArduino[0])
+
+        if self.cBoxIA.currentText() == 'ID3':
+            self.cBoxDiscretizar.clear()
+            self.cBoxDiscretizar.addItem('Si')
 
 
     # Área de los Slots
-    def Generar (self):
+    def Generar(self):
         print();
 
-    def Salir (self):
+    def Salir(self):
         # desconectar arduino
 
         sys.exit()
 
-    def cantidad (self):
+    def cantidad(self):
         if self.cBoxCantidad.currentText() == '1':
-            self.cBoxPreArduino.model().item(0).setEnabled(False)
-            self.cBoxPreArduino.model().item(1).setEnabled(False)
-            self.cBoxPreArduino.model().item(2).setEnabled(False)
-            self.cBoxPreArduino.model().item(3).setEnabled(False)
-            self.cBoxPreArduino.model().item(4).setEnabled(False)
-            self.cBoxPreArduino.model().item(5).setEnabled(True)
+            self.cBoxPreArduino.clear()
+            self.cBoxPreArduino.addItem(self.listaPreArduino[0])
         else:
-            self.cBoxPreArduino.model().item(0).setEnabled(True)
-            self.cBoxPreArduino.model().item(1).setEnabled(True)
-            self.cBoxPreArduino.model().item(2).setEnabled(True)
-            self.cBoxPreArduino.model().item(3).setEnabled(True)
-            self.cBoxPreArduino.model().item(4).setEnabled(True)
-            self.cBoxPreArduino.model().item(5).setEnabled(False)
+            self.cBoxPreArduino.clear()
+            self.cBoxPreArduino.addItems(self.listaPreArduino[1])
+
+    def IA(self):
+        if self.cBoxIA.currentText() == 'ID3' or self.cBoxIA.currentText() == 'Naive Bayes':
+            self.cBoxDiscretizar.clear()
+            self.cBoxDiscretizar.addItem('Si')
+        else:
+            self.cBoxDiscretizar.clear()
+            self.cBoxDiscretizar.addItem('No')
 
 
 if __name__ == "__main__":
