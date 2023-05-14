@@ -1,4 +1,6 @@
 import sys
+from time import sleep
+import serial as conectar
 from PyQt5 import uic, QtWidgets, QtCore
 
 qtCreatorFile = "Proyecto_U3_Interfaz.ui"  # Nombre del archivo aquí.
@@ -30,10 +32,53 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
             self.cBoxDiscretizar.clear()
             self.cBoxDiscretizar.addItem('Si')
 
+        self.arduino = None
+        self.arduino = conectar.Serial(port="COM3", baudrate=9600, timeout=1)
+
 
     # Área de los Slots
     def Generar(self):
-        print();
+        try:
+            # Envir una cadena que indique el tipo de preprocesamiento de datos usaremos
+            # Ejemplo: A,30, el A se obtiene del preprocesmiento y el numero de cBoxCantidad
+            self.cantidad = self.cBoxCantidad.currentText()
+            self.preProcesamiento = self.cBoxPreArduino.currentText()
+            if self.preProcesamiento == 'Menor':
+                self.proceso = "A"
+            elif self.preProcesamiento == 'Mayor':
+                self.proceso = "B"
+            elif self.preProcesamiento == 'Media':
+                self.proceso = "C"
+            elif self.preProcesamiento == 'Mediana':
+                self.proceso = "D"
+            elif self.preProcesamiento == 'Moda':
+                self.proceso = "E"
+            else:
+                self.proceso = "Q"
+
+            self.pre = self.proceso + "," + self.cantidad
+
+            self.arduino.write(self.pre.encode())
+            sleep(1)
+            if not self.arduino == None:
+                if self.arduino.isOpen():
+                    self.cadena = self.arduino.readline()
+                    self.cadena = self.cadena.decode()
+                    self.cadena = self.cadena.replace("\n", "")
+                    self.cadena = self.cadena.replace("\r", "")
+            print(self.cadena)
+
+            self.vector = self.cadena.split(",")
+            self.vectorP = list(map(int, self.vector))
+            print(self.vectorP)
+
+            # Preprocesar en Python
+            # Descartar por Outliers, mostrar si se elimina
+            # Aplicar un metodo de IA nota(Discretizar en caso de que sea necesario :))
+
+
+        except Exception as error:
+            print(error)
 
     def Salir(self):
         # desconectar arduino
