@@ -2,6 +2,7 @@ import sys
 from time import sleep
 import serial as conectar
 from PyQt5 import uic, QtWidgets, QtCore
+# from Knn import knn
 
 qtCreatorFile = "Proyecto_U3_Interfaz.ui"  # Nombre del archivo aquí.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
@@ -76,13 +77,15 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
             # Descartar por Outliers, mostrar si se elimina
             # Aplicar un metodo de IA nota(Discretizar en caso de que sea necesario :))
 
+            # if self.cBoxIA.currentText() == 'KNN': # usuario escogió knn
+            #     temp = knn(self.vectorP)
 
         except Exception as error:
             print(error)
 
     def Salir(self):
         # desconectar arduino
-
+        self.arduino.close()
         sys.exit()
 
     def cantidad(self):

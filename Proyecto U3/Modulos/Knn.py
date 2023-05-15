@@ -1,6 +1,6 @@
 import math
 
-def knn():
+def knn(lista):
 
     def Coseno(A, B):
         dot_product = sum(a * b for a, b in zip(A, B))
@@ -99,6 +99,8 @@ def knn():
     print("\n\n")
     claseas = "CLASE: " + claseModa
     print(claseas)
+
+    # return VP
 
 if __name__ == "__main__":
     knn()
