@@ -1,6 +1,6 @@
 import numpy as n
 
-def asociador():
+def asociador(vectorP):
     archivo = open("../Archivos/InstanciaPokes_Entrenamiento.txt")
     contenido = archivo.readlines()
 
@@ -21,20 +21,20 @@ def asociador():
 
     W = Y.dot(Xpseudo)
 
-    print("X:")
-    print(X)
+    #print("X:")
+    #print(X)
 
-    print("Y:")
-    print(Y)
+    #print("Y:")
+    #print(Y)
 
-    print("W:")
-    print(W)
+    #print("W:")
+    #print(W)
 
     ###PRUEBA DE LA FUNCIOANLIDA DEL ASOCIADOR LINEA
     # VAMOS A PROBAR CADA UNO DE LOS CASOS PARA OBSERVAR SI LA RED ES CAPAZ DE
     # CLASIFICAR CORRECTAMENTE
 
-    print("Prueba...")
+    #print("Prueba...")
 
     casosCorrectos = 0
 
@@ -42,18 +42,18 @@ def asociador():
     Clases = ["PLANTA", "FUEGO", "AGUA", "ROCA"]
 
     for i in range(X.shape[1]):  # para cada uno de los casos/registros de prueba
-        print("Prueba del Caso ", i + 1)
+        #print("Prueba del Caso ", i + 1)
         casoi = X[:, i]
-        print("Caso Analizado: ")
-        print(casoi)
+        #print("Caso Analizado: ")
+        #print(casoi)
 
         Ycasoi = W.dot(casoi)
-        print("Salidas Generadas: ")
-        print(Ycasoi)
+        #print("Salidas Generadas: ")
+        #print(Ycasoi)
 
-        print("Salidas Real: ")
+        #print("Salidas Real: ")
         Yrealcasoi = Y[:, i]
-        print(Yrealcasoi)
+        #print(Yrealcasoi)
 
         IndexMaxYcasoi = list(Ycasoi).index(max(Ycasoi))
         IndexMaxYrealcasoi = list(Yrealcasoi).index(max(Yrealcasoi))
@@ -61,30 +61,29 @@ def asociador():
         if IndexMaxYcasoi == IndexMaxYrealcasoi:
             casosCorrectos += 1
 
-        print("Clase Asignada: ", Clases[IndexMaxYcasoi])
-        print("Clase Real: ", Clases[IndexMaxYrealcasoi])
-        print()
+       # print("Clase Asignada: ", Clases[IndexMaxYcasoi])
+      #  print("Clase Real: ", Clases[IndexMaxYrealcasoi])
+     #   print()
 
-    print("Total de Casos Analizados: ", X.shape[1])
-    print("Total de Casos Correctos: ", casosCorrectos)
+    #print("Total de Casos Analizados: ", X.shape[1])
+    #print("Total de Casos Correctos: ", casosCorrectos)
 
-    print("Eficiencia del Asociador Lineal: ", casosCorrectos / X.shape[1] * 100.0)
+    #print("Eficiencia del Asociador Lineal: ", casosCorrectos / X.shape[1] * 100.0)
 
     # UTILIZACIÓN DEL ASOCIADOR LINEAL...
-    print("\n\nPrueba de funcionamiento del asociador lineal: ")
+    #print("\n\nPrueba de funcionamiento del asociador lineal: ")
 
     # 0 0 1 0  = FUEGO
-    x = [70, 100, 80, 40, 95]
+    x = vectorP
 
     x = n.array(x)
     Ycasox = W.dot(x)
 
-    print(Ycasox)
+    #print(Ycasox)
     IndexMaxYcasoi = list(Ycasox).index(max(Ycasox))
 
-    print("Clase Asignada: ", Clases[IndexMaxYcasoi])
     clase = "Clase Asignada: " + Clases[IndexMaxYcasoi]
-    print(clase)
+    return clase
 
 
 if __name__ == "__main__":
