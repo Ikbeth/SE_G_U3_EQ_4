@@ -1,8 +1,12 @@
 import sys
 from time import sleep
+from Proyecto_U3.Modulos.Discretizar import discretizar_rangos
+from Proyecto_U3.Modulos.Main import id3s
+from Proyecto_U3.Modulos.Knn import knn
+from Proyecto_U3.Modulos.Asociador_Lineal import asociador
+#from Proyecto_U3.Modulos.NaiveBayes import
 import serial as conectar
-from PyQt5 import uic, QtWidgets, QtCore
-# from Knn import knn
+from PyQt5 import uic, QtWidgets
 
 qtCreatorFile = "Proyecto_U3_Interfaz.ui"  # Nombre del archivo aquí.
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
@@ -74,18 +78,29 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
             print(self.vectorP)
 
             # Preprocesar en Python
-            # Descartar por Outliers, mostrar si se elimina
-            # Aplicar un metodo de IA nota(Discretizar en caso de que sea necesario :))
 
-            # if self.cBoxIA.currentText() == 'KNN': # usuario escogió knn
-            #     temp = knn(self.vectorP)
+            if self.cBoxIA.currentText() == 'ID3':
+                self.arr = discretizar_rangos(self.vectorP)
+                print(self.arr)
+                self.clase = id3s(self.arr)
+
+            #if self.cBoxIA.currentText() == 'Naive Bayes':
+                #self.arr = discretizar_rangos(self.vectorP)
+                # aqui es lo de Naive Bayes self.clase =
+
+            elif self.cBoxIA.currentText() == 'Asociador Lineal':
+                self.clase = asociador(self.vectorP)
+
+            elif self.cBoxIA.currentText() == 'KNN':
+                self.clase = knn(self.vectorP)
+
+            print(self.clase)
 
         except Exception as error:
             print(error)
 
     def Salir(self):
         # desconectar arduino
-        self.arduino.close()
         sys.exit()
 
     def cantidad(self):
