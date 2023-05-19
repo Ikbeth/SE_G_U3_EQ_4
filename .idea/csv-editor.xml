@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\Ejercicios\Archivos\100_pokemones_ACTUALIZADA.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Ejercicios\Archivos\ebw.csv">
           <value>
             <Attribute>
@@ -11,6 +18,13 @@
           </value>
         </entry>
         <entry key="\Ejercicios\Archivos\instancia.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Ejercicios\Archivos\instancia100Discretizada.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -38,7 +52,28 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Proyecto U3\Archivos\instancia.csv">
+        <entry key="\Proyecto_U3\Archivos\instanciaDiscretizada.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Proyecto_U3\Archivos\instancia_entrenamiento.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Prácticas\Archivos\InstanciaEntrenamientowine.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Prácticas\Archivos\InstanciaPruebawine.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -53,6 +88,20 @@
           </value>
         </entry>
         <entry key="\Prácticas\Archivos\instanciaDiscretizada.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Prácticas\Archivos\instanciaEntrenamientoPokes.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Prácticas\Archivos\instanciaPruebaPokes.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -1,7 +1,7 @@
 
 
 if __name__ == '__main__':
-    file2read = open("../Archivos/Instancia_wine.csv")
+    file2read = open("../Archivos/InstanciaPruebawine.csv")
     file_content = file2read.readlines()
 
     dataset = []
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # TESTING
 
-    file2read = open("../Archivos/Instancia_wine.csv")
+    file2read = open("../Archivos/InstanciaEntrenamientowine.csv")
     file_content = file2read.readlines()
 
     dataset = []
@@ -61,35 +61,41 @@ if __name__ == '__main__':
 
     correct_classify = 0
 
-    for k in range(len(dataset)):
-        register = dataset[k]
-        sum = 0
-        probabilities_per_class = {}
-        for c in probabilities[0]:
-            # print(c)
-            auxiliar = probabilities[0][c]
-            for index in range(1, len(probabilities)):
-                if (register[index - 1], c) in probabilities[index]:
-                    auxiliar *= probabilities[index][(register[index - 1], c)]
-                else:
-                    auxiliar = 0  # nullify the product
-            sum += auxiliar
-            probabilities_per_class[c] = auxiliar
-        # print(probabilities_per_class)
+    try:
+        for k in range(len(dataset)):
+            register = dataset[k]
+            sum = 0
+            probabilities_per_class = {}
+            for c in probabilities[0]:
+                # print(c)
+                auxiliar = probabilities[0][c]
+                for index in range(1, len(probabilities)):
+                    if (register[index - 1], c) in probabilities[index]:
+                        auxiliar *= probabilities[index][(register[index - 1], c)]
+                    else:
+                        auxiliar = 0  # nullify the product
+                sum += auxiliar
+                probabilities_per_class[c] = auxiliar
+            print(probabilities_per_class)
 
-        max = -9999
-        c_toAssign = ""
-        for p in probabilities_per_class:
-            probabilities_per_class[p] = probabilities_per_class[p] / sum
-            if probabilities_per_class[p] > max:
-                max = probabilities_per_class[p]
-                c_toAssign = p
+            max = -9999
+            c_toAssign = ""
+            if sum==0:
+                sum=1
+
+            for p in probabilities_per_class:
+                probabilities_per_class[p] = probabilities_per_class[p] / sum
+                if probabilities_per_class[p] > max:
+                    max = probabilities_per_class[p]
+                    c_toAssign = p
 
         print("Real Class: ", dataset[k][-1], "Assigned Class: ", c_toAssign, " Probability: ", round(max * 100, 4),
               "%")
 
         if dataset[k][-1] == c_toAssign:
             correct_classify += 1
+    except Exception as error:
+        print(error)
 
     print("\n\nCorrect Classify: ", correct_classify, " Total Evaluated: ", len(dataset), " Efficiency: ",
           round(correct_classify / len(dataset) * 100, 4), "%")

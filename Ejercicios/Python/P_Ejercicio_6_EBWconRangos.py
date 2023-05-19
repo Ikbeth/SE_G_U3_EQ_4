@@ -5,7 +5,7 @@ k = 6
 
 
 def discretzar_rangos():
-    df = pd.read_csv('../Archivos/instancia.csv', header=None)
+    df = pd.read_csv('../Archivos/100_pokemones_ACTUALIZADA.csv', header=None)
 
     col0 = df[0].values.tolist()
     col7 = df[7].values.tolist()
@@ -35,8 +35,8 @@ def discretzar_rangos():
     newcol6 = df[6].apply(condiciones, args=(ran6,))
     # print(newcol6)
 
-    with open('../Archivos/instanciaDiscretizada.csv', 'w') as archivo:
-        for i in range(49):
+    with open('../Archivos/instancia100Discretizada.csv', 'w') as archivo:
+        for i in range(100):
             archivo.write(col0[i] + ',' + str(newcol1[i]) + ',' + str(newcol2[i]) + ',' + str(newcol3[i]) + ','
                           + str(newcol4[i]) + ',' + str(newcol5[i]) + ',' + str(newcol6[i]) + ',' + col7[i] + '\n')
 
