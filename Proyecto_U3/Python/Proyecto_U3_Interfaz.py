@@ -5,6 +5,10 @@ from Proyecto_U3.Modulos.Main import id3s
 from Proyecto_U3.Modulos.Knn import knn
 from Proyecto_U3.Modulos.Asociador_Lineal import asociador
 from Proyecto_U3.Modulos.NaiveBayes import NaiveBayes
+from Proyecto_U3.Modulos.Outliers import outliers
+from Proyecto_U3.Modulos.Estadistico_Z import stdZ
+from Proyecto_U3.Modulos.Normalizacion import normalizacion
+from Proyecto_U3.Modulos.Estandarizacion import estandarizacion
 import serial as conectar
 from PyQt5 import uic, QtWidgets
 
@@ -21,12 +25,13 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
         # Área de los Signals
 
         # conectar arduino
+        self.listWidget = QtWidgets.QListWidget(self)
+        self.listWidget.setGeometry(310, 20, 200, 260)
 
         self.btnGenerar.clicked.connect(self.Generar)
         self.btnSalir.clicked.connect(self.Salir)
         self.cBoxCantidad.activated.connect(self.cantidad)
         self.cBoxIA.activated.connect(self.IA)
-
         self.listaPreArduino = ['Ninguna', ['Media', 'Mediana', 'Moda', 'Menor', 'Mayor']]
 
         if self.cBoxCantidad.currentText() == '1':
@@ -77,27 +82,57 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
             self.vectorP = list(map(int, self.vector))
             print(self.vectorP)
 
-            # Preprocesar en Python
 
-            if self.cBoxIA.currentText() == 'ID3':
-                self.arr = discretizar_rangos(self.vectorP)
-                print(self.arr)
-                self.clase = id3s(self.arr)
+            self.Est = estandarizacion(self.vectorP)
 
-            elif self.cBoxIA.currentText() == 'Naive Bayes':
-                self.arr = discretizar_rangos(self.vectorP)
-                self.clase = NaiveBayes(self.vectorP)
+            if self.cBoxOutliers.currentText() == 'IQR':
+                self.out = outliers(self.vectorP)
+                if self.out == False:
+                    if self.cBoxIA.currentText() == 'ID3':
+                        self.arr = discretizar_rangos(self.vectorP)
+                        self.clase = id3s(self.arr)
 
-            elif self.cBoxIA.currentText() == 'Asociador Lineal':
-                self.clase = asociador(self.vectorP)
+                    elif self.cBoxIA.currentText() == 'Naive Bayes':
+                        self.arr = discretizar_rangos(self.vectorP)
+                        print(self.arr)
+                        self.clase = NaiveBayes(self.arr)
 
-            elif self.cBoxIA.currentText() == 'KNN':
-                self.clase = knn(self.vectorP)
+                    elif self.cBoxIA.currentText() == 'Asociador Lineal':
+                        self.clase = asociador(self.vectorP)
 
-            print(self.clase)
+                    elif self.cBoxIA.currentText() == 'KNN':
+                        self.clase = knn(self.vectorP)
+                else:
+                    self.clase = 'No se puede asigar una clase '
 
+
+
+            else:
+                self.out = stdZ(self.vectorP)
+                if self.out == False:
+                    if self.cBoxIA.currentText() == 'ID3':
+                        self.arr = discretizar_rangos(self.vectorP)
+                        print(self.arr)
+                        self.clase = id3s(self.arr)
+
+                    elif self.cBoxIA.currentText() == 'Naive Bayes':
+                        self.arr = discretizar_rangos(self.vectorP)
+                        self.clase = NaiveBayes(self.arr)
+
+                    elif self.cBoxIA.currentText() == 'Asociador Lineal':
+                        self.clase = asociador(self.vectorP)
+
+                    elif self.cBoxIA.currentText() == 'KNN':
+                        self.clase = knn(self.vectorP)
+                else:
+                    self.clase = 'No se puede asigar una clase '
+
+
+            self.listWidget.addItem(self.clase)
+            self.listWidget.setCurrentRow(self.listWidget.count() - 1)
         except Exception as error:
             print(error)
+
 
     def Salir(self):
         # desconectar arduino
