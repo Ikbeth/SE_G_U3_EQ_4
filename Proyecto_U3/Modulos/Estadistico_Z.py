@@ -63,7 +63,7 @@ def stdZ(vector):
         if z[i] < -umbralZ or z[i] > umbralZ:
             ex = True
 
-    print(ex)
+    # print(ex)
     return ex
 
 

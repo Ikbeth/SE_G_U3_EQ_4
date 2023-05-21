@@ -35,17 +35,6 @@ def outliers(vector):
     col4.sort()
     col5.sort()
 
-    #print(col3)
-    # POSICION CUARTILES
-
-    pos = []
-    v = len(col1)
-
-    for i in range(4):
-        #print(v)
-        pos.append(((i + 1) * (v + 1)) / 4)
-    #print(pos)
-
     # VALOR CUARTILES 1 Y 3
 
     q1c1 = np.percentile(col1, 25)

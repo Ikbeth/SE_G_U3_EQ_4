@@ -66,7 +66,7 @@ def NaiveBayes(vector):
             max = probabilities_per_class[p]
             c_toAssign = p
 
-    vector.append(c_toAssign)
+    # vector.append(c_toAssign)
 
     # print(vector)
     return c_toAssign

@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Proyecto_U3\Archivos\Entrenamiento_Pokes.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Proyecto_U3\Archivos\instanciaDiscretizada.csv">
           <value>
             <Attribute>
